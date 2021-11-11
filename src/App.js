@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Homepage from "./components/Homepage";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Cart from "./components/Cart";
+import { BrowserRouter } from "react-router-dom";
+import ViewProduct from "./components/ViewProduct";
 
 function App() {
+  const cart = useSelector((state) => state.getReducer.cartList);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <h1>Welcome to E-Commerce</h1>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <ul className="navbar-nav mr-auto">
+            <li>
+              <Link to={"/"} className="nav-link">
+                {" "}
+                Home{" "}
+              </Link>
+            </li>
+            <li>
+              <Link to={"/cart"} className="nav-link">
+                Cart <span style={{ color: "red" }}>({cart?.length})</span>
+              </Link>
+            </li>
+          </ul>
+        </nav>
+        <hr></hr>
+        <Switch>
+          <Route exact path="/" component={Homepage} />
+          <Route path="/cart" component={Cart} exact />
+          <Route path="/viewProduct" component={ViewProduct} exact />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
