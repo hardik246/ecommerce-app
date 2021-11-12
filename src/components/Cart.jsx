@@ -30,16 +30,13 @@ const theme = createTheme();
 
 export default function Homepage() {
   const cart = useSelector((state) => state.getReducer.cartList);
-  console.log("cart");
   const dispatch = useDispatch();
 
   const quantityUp = (id, price) => {
-    console.log("quantityUp");
     dispatch(actions.quantityUp({ id: id, price: price }));
   };
 
   const quantityDown = (id, price) => {
-    console.log("quantityDown");
     dispatch(actions.quantityDown({ id: id, price: price }));
   };
   return (

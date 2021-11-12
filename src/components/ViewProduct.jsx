@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 function ViewProduct() {
   const view = useSelector((state) => state.getReducer.viewItem);
-  console.log(view);
   const dispatch = useDispatch();
 
   return (
@@ -27,19 +26,19 @@ function ViewProduct() {
                 >
                   <h3>
                     <span style={{ color: "red" }}>Title: </span>
-                    {data.title}
+                    <h6>{data.title} </h6>
                   </h3>
                   <h3>
                     <span style={{ color: "red" }}>Name: </span>
-                    {data.name}
+                    <h6>{data.name} </h6>
                   </h3>
                   <h3>
                     <span style={{ color: "red" }}>Description: </span>
-                    {data.description}
+                    <h6>{data.description}</h6>
                   </h3>
                   <h3>
                     <span style={{ color: "red" }}>Price: </span>
-                    {data.price}
+                    <h6>{data.price} </h6>
                   </h3>
                 </div>
               </div>

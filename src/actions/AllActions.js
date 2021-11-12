@@ -37,7 +37,6 @@ export const quantityDown = (id) => {
 };
 
 export const viewProduct = (data) => {
-  console.log(data);
   return {
     type: "VIEW_LIST",
     payload: data,

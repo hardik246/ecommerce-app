@@ -15,15 +15,12 @@ const fetchProducts = (state, action) => {
 const cartProducts = (state, action) => {
   let temp = { ...state };
   let tempForm = [...temp.cartList];
-  console.log(tempForm);
   tempForm.push({ ...action.payload, quantity: 1 });
-  console.log(action.payload);
   temp.cartList = tempForm;
   return temp;
 };
 
 const quantityPlus = (state, action) => {
-  console.log(action);
   let temp = { ...state };
   let tempForm = [...temp.cartList];
   let tempList = [...temp.list];
@@ -31,8 +28,6 @@ const quantityPlus = (state, action) => {
   tempForm.map((item, i) => {
     if (item.id === action.payload.id && item.quantity !== 10) {
       let itemQuantity = item.quantity + 1;
-      console.log(item.price, tempList[index].price);
-      console.log(item.price + tempList[index].price);
       let itemPrice = item.price + tempList[index].price;
       item.price = itemPrice;
       item.quantity = itemQuantity;
@@ -69,17 +64,12 @@ const quantityMinus = (state, action) => {
 const viewProduct = (state, action) => {
   let temp = { ...state };
   let tempForm = [...temp.viewItem];
-  console.log(tempForm);
-  console.log([action.payload]);
   tempForm = [action.payload];
-  console.log(tempForm);
   temp.viewItem = tempForm;
-  console.log(temp);
   return temp;
 };
 
 const getReducer = (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case "FETCH_DATA_REQUEST":
       return state;
