@@ -12,7 +12,7 @@ function ViewProduct() {
         {view.map((data, i) => {
           return (
             <>
-              <div className="flex" style={{ display: "flex" }}>
+              <div className="flex">
                 <div className="left">
                   <div className="image">
                     <img
