@@ -3,6 +3,7 @@ import { cartList } from "./AllActions";
 import { quantityUp } from "./AllActions";
 import { quantityDown } from "./AllActions";
 import { viewProduct } from "./AllActions";
+import { removeFromCart } from "./AllActions";
 
 const actions = {
   fetchProducts,
@@ -10,6 +11,7 @@ const actions = {
   quantityUp,
   quantityDown,
   viewProduct,
+  removeFromCart,
 };
 
 export default actions;

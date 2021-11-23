@@ -43,9 +43,18 @@ export const viewProduct = (data) => {
   };
 };
 
+export const removeFromCart = (data) => {
+  console.log(data);
+  return {
+    type: "REMOVE_CART",
+    payload: data,
+  };
+};
+
 export default {
   cartList,
   quantityUp,
   quantityDown,
   viewProduct,
+  removeFromCart,
 };

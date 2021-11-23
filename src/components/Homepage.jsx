@@ -8,7 +8,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import actions from "../actions/Index";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -18,6 +18,7 @@ const theme = createTheme();
 export default function Homepage() {
   const list = useSelector((state) => state.getReducer.list);
   const cart = useSelector((state) => state.getReducer.cartList);
+  console.log(cart);
   let itemInCart = list.map((item, i) => {
     return item.id;
   });
@@ -53,6 +54,8 @@ export default function Homepage() {
     };
     dispatch(actions.viewProduct(obj));
   };
+
+  // let index = cart.findIndex((element) => element.id === );
 
   return (
     <ThemeProvider theme={theme}>
@@ -91,7 +94,7 @@ export default function Homepage() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Link to="/viewProduct">
+                    <Link to="/viewProduct" style={{ textDecoration: "none" }}>
                       <Button
                         size="small"
                         onClick={() =>
@@ -110,19 +113,28 @@ export default function Homepage() {
                       </Button>
                     </Link>
 
-                    <Button
-                      size="small"
-                      onClick={() =>
-                        addCartClick(
-                          listProduct.image,
-                          listProduct.price,
-                          listProduct.id,
-                          listProduct.category
-                        )
-                      }
-                    >
-                      Add to cart
-                    </Button>
+                    {cart.some((element) => element.id === listProduct.id) ? (
+                      <Link to="/cart" style={{ textDecoration: "none" }}>
+                        {" "}
+                        <Button size="small" style={{ color: "red" }}>
+                          Go to cart
+                        </Button>
+                      </Link>
+                    ) : (
+                      <Button
+                        size="small"
+                        onClick={() =>
+                          addCartClick(
+                            listProduct.image,
+                            listProduct.price,
+                            listProduct.id,
+                            listProduct.category
+                          )
+                        }
+                      >
+                        Add to cart
+                      </Button>
+                    )}
                   </CardActions>
                 </Card>
               </Grid>

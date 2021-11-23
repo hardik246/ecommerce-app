@@ -39,6 +39,18 @@ export default function Homepage() {
   const quantityDown = (id, price) => {
     dispatch(actions.quantityDown({ id: id, price: price }));
   };
+
+  const removeCart = (id, price, name, quantity) => {
+    dispatch(
+      actions.removeFromCart({
+        id: id,
+        price: price,
+        name: name,
+        quantity: quantity,
+      })
+    );
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <main>
@@ -87,7 +99,19 @@ export default function Homepage() {
                     >
                       +
                     </Button>
-                    <Button size="large">Remove Cart</Button>
+                    <Button
+                      size="large"
+                      onClick={() =>
+                        removeCart(
+                          item.id,
+                          item.price,
+                          item.name,
+                          item.quantity
+                        )
+                      }
+                    >
+                      Remove Cart
+                    </Button>
                   </CardActions>
                 </Card>
               </Grid>

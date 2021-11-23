@@ -26,7 +26,7 @@ const quantityPlus = (state, action) => {
   let tempList = [...temp.list];
   let index = tempList.findIndex((element) => element.id === action.payload.id);
   tempForm.map((item, i) => {
-    if (item.id === action.payload.id && item.quantity !== 10) {
+    if (item.id === action.payload.id && item.quantity !== 5) {
       let itemQuantity = item.quantity + 1;
       let itemPrice = item.price + tempList[index].price;
       item.price = itemPrice;
@@ -69,6 +69,14 @@ const viewProduct = (state, action) => {
   return temp;
 };
 
+const removeCart = (state, action) => {
+  let temp = { ...state };
+  let tempForm = [...temp.cartList];
+  tempForm = tempForm.filter((element) => element.id !== action.payload.id);
+  temp.cartList = tempForm;
+  return temp;
+};
+
 const getReducer = (state = initialState, action) => {
   switch (action.type) {
     case "FETCH_DATA_REQUEST":
@@ -88,6 +96,9 @@ const getReducer = (state = initialState, action) => {
 
     case "VIEW_LIST":
       return viewProduct(state, action);
+
+    case "REMOVE_CART":
+      return removeCart(state, action);
 
     default:
       return state;
