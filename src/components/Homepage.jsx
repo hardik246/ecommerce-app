@@ -12,20 +12,15 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import actions from "../actions/Index";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const theme = createTheme();
 
 export default function Homepage() {
   const list = useSelector((state) => state.getReducer.list);
   const cart = useSelector((state) => state.getReducer.cartList);
-  console.log(cart);
-  let itemInCart = list.map((item, i) => {
-    return item.id;
-  });
 
-  let cartDetails = cart.map((item, i) => {
-    return item.id;
-  });
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,6 +35,7 @@ export default function Homepage() {
       name: category,
     };
     dispatch(actions.cartList(obj));
+    toast.success("Add to Cart!");
   };
 
   const viewClick = (image, price, id, category, title, description, rate) => {
@@ -135,6 +131,7 @@ export default function Homepage() {
                         Add to cart
                       </Button>
                     )}
+                    <ToastContainer />
                   </CardActions>
                 </Card>
               </Grid>

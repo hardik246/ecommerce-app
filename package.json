@@ -2,7 +2,7 @@
   "name": "ecommerce-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://hardik246.github.io/ecommerce-app", 
+  "homepage": "http://hardik246.github.io/ecommerce-app",
   "dependencies": {
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
@@ -19,6 +19,7 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-toastify": "^8.1.0",
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
     "redux-logger": "^3.0.6",
@@ -33,7 +34,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
-    
   },
   "eslintConfig": {
     "extends": [
